@@ -1,4 +1,4 @@
-//-extends ../layout
+extends ../layout
 
 block content
   h1= title
@@ -8,19 +8,15 @@ block content
   form(action='/articles/' + article.id + '?_method=PUT', method='post')
     p
         label(for='title') Title
-    p
         input(name='title', id = 'title', type='text', value = article.title)
     p
         label(for='author') Author
-    p
         input(name='author', id = 'author', type='text', value = article.author)
     p
         label(for='genre') Genre
-    p
         input(name='genre', id = 'genre', type='text', value = article.genre)
     p
         label(for='year') Year
-    p
         input(name='year', id = 'year', type='text', value = article.year)
     p
 
