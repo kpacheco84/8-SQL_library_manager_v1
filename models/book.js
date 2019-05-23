@@ -2,7 +2,7 @@
 var dateFormat = require('dateformat');
 
 module.exports = function(sequelize, DataTypes) {
-  var Article = sequelize.define('Article', {
+  var book = sequelize.define('book', {
     title:{
        type: DataTypes.STRING,
         validate: {
@@ -20,15 +20,15 @@ module.exports = function(sequelize, DataTypes) {
     year:DataTypes.INTEGER
   });
 
-  // Article.someClassMethod = function() {};
+  // book.someClassMethod = function() {};
 
-  Article.prototype.publishedAt = function() {
+  book.prototype.publishedAt = function() {
     return dateFormat(this.createdAt, "dddd, mmmm dS, yyyy, h:MM TT");
   };
 
-  Article.prototype.shortDescription = function() { 
+  book.prototype.shortDescription = function() { 
     return this.body.length > 30 ? this.body.substr(0, 30) + "..." : this.body;
   };
 
-  return Article;
+  return book;
 };
