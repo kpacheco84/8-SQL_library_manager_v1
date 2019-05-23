@@ -12,7 +12,7 @@ var book = require("../models").book;
 //- GET books listing.
 router.get('/', function(req, res, next) {
   book.findAll({order: [["createdAt", "DESC"]]}).then(function(book){
-    res.render('books/index', {books: book, title: 'My Awesome Blog' });
+    res.render('books/index', {books: book, title: 'Books' });
   }).catch(function(err){
     res.send(500);
   });

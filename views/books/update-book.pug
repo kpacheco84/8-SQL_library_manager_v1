@@ -24,7 +24,7 @@ block content
     p
 
 
-  form(action='/books/' + book.id +'?_method=DELETE', method='post')
+  form(action="/books/" + book.id +"?_method=DELETE" ,onsubmit="return confirm('Are you sure?')")
     p
       a(href='/books', class='button') Cancel
     p

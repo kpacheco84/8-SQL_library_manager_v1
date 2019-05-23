@@ -2,8 +2,11 @@ extends ../layout
 
 block content
   h1= book.title
+
+  p= book.genre
+  p= book.year
+
   include by_line
-  p= book.body
   a(href="../") &larr; Back
   | | 
   a(href="/books/" + book.id + "/update-book") Edit book
