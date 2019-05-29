@@ -21,15 +21,15 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
   book.create(req.body).then(function(book) {
-   //- res.redirect("/books/" + book.id);
    res.redirect("/books");
   }).catch(function(err){
-    if(err.name === "SequelizeValidationError"){
-      res.render('books/new-book', {book: book.build(req.body),
-         title: 'New book',
-         errors:err.errors
-        
-        });
+   
+      if(err.name === "SequelizeValidationError"){
+        res.render('books/new-book', {book: book.build(req.body),
+           title: 'New book',
+           errors:err.errors
+          
+          });
   }else{
     throw err;
   }
@@ -47,7 +47,7 @@ router.get('/new-book', function(req, res, next) {
 router.get('/:id/update-book', function(req, res, next){
   book.findByPk(req.params.id).then(function(book) {
     if(book){
-    res.render('books/update-book', {book: book, title: 'Edit book'});
+    res.render('books/update-book', {book: book, title: 'Edit Eook'});
     }else {
       res.render("books/page-not-found");
     }
@@ -64,7 +64,7 @@ router.get('/:id/update-book', function(req, res, next){
 router.get("/:id", function(req, res, next){
   Book.findByPk(req.params.id).then(function(book){
     if(book){
-      res.render('books/update-book', {book: book, title: 'Edit book'});
+      res.render('books/update-book', {book: book, title: 'Edit Book'});
 } else {
     res.render("page-not-found");
   }
@@ -84,17 +84,15 @@ router.put('/:id', function(req, res, next){
     res.render("books/page-not-found");
   }
   }).then(function(book){
-    res.redirect("/books");    
+    res.redirect("/books");
   }).catch(function(err){
-    if(err.name === "SequelizeValidationError"){
-      var book = book.build(req.body);
-      book.id = req.params.id;
-
-      res.render('books/update-book', {
-        book: book,
-        title: 'Edit book',
-        errors:err.errors
-      });
+   
+      if(err.name === "SequelizeValidationError"){
+        res.render('books/update-book', {book: book.build(req.body),
+           title: 'Edit Book',
+           errors:err.errors
+          
+          });
   }else{
     throw err;
   }

@@ -2,6 +2,8 @@ extends ../layout
 
 block content
   h1= title
+
+  
   include errors
   
   
@@ -24,7 +26,7 @@ block content
     p
 
        
-  form(action="/books/" + book.id +"?_method=DELETE" ,onsubmit="return confirm('Are you sure?')")
+  form(action="/books/" + book.id +"?_method=DELETE" ,onsubmit="return confirm('Are you sure?')",method='post')
     p
       a(href='/books', class='button') Cancel
     p
