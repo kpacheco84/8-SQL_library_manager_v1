@@ -53,37 +53,26 @@ router.get('/:id/update-book', function(req, res, next){
     }
   
   }).catch(function(err){
-    res.send(500);
+    res.render(500);
   });
 });
 
 
-//- Delete book form. 
-router.get('/:id/delete', function(req, res, next){
-  book.findByPk(req.params.id).then(function(book) {
-    if(book){
-    res.render('books/delete', {book: book, title: 'Delete book'});
-  }else {
-    res.render("books/page-not-found");
-  }
-  }).catch(function(err){
-    res.send(500);
-  });
-});
 
+/* GET individual book */
 
-//-GET individual book. 
 router.get("/:id", function(req, res, next){
-  book.findByPk(req.params.id).then(function(book){
+  Book.findByPk(req.params.id).then(function(book){
     if(book){
-    res.render("books/show", {book: book, title: book.title, genre: book.genre,year: book.year });
-  }else {
-      res.render("books/page-not-found");
+      res.render('books/update-book', {book: book, title: 'Edit book'});
+} else {
+    res.render("page-not-found");
   }
- }).catch(function(err){
-    res.send(500);
+}).catch(function(error){
+    res.sendStatus(500, error);
   });
 });
+
 
 //- PUT update book.
 router.put('/:id', function(req, res, next){
@@ -111,7 +100,7 @@ router.put('/:id', function(req, res, next){
   }
   })
    .catch(function(err){
-    res.send(500);
+    res.render(500);
   });
 });
 
