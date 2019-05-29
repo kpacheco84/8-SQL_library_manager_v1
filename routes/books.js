@@ -8,7 +8,6 @@ var book = require("../models").book;
 
 
 
-
 //- GET books listing.
 router.get('/', function(req, res, next) {
   book.findAll({order: [["createdAt", "DESC"]]}).then(function(book){
@@ -65,7 +64,7 @@ router.get('/:id/delete', function(req, res, next){
     if(book){
     res.render('books/delete', {book: book, title: 'Delete book'});
   }else {
-    res.send(404);
+    res.render("books/page-not-found");
   }
   }).catch(function(err){
     res.send(500);
@@ -93,7 +92,7 @@ router.put('/:id', function(req, res, next){
     if(book){
     return book.update(req.body);
   }else {
-    res.send(404);
+    res.render("books/page-not-found");
   }
   }).then(function(book){
     res.redirect("/books");    
@@ -123,7 +122,7 @@ router.delete('/:id', function(req, res, next){
    
     return book.destroy();
   }else {
-    res.send(404);
+    res.render("books/page-not-found");
   }
   }).then(function(){
     res.redirect("/books");
