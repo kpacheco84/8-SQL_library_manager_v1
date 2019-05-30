@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
   book.findAll({order: [["createdAt", "DESC"]]}).then(function(book){
     res.render('books/index', {books: book, title: 'Books' });
   }).catch(function(err){
-    res.send(500);
+    res.render("books/error");
   });
 });
 
@@ -62,7 +62,7 @@ router.get('/:id/update-book', function(req, res, next){
 /* GET individual book */
 
 router.get("/:id", function(req, res, next){
-  Book.findByPk(req.params.id).then(function(book){
+  book.findByPk(req.params.id).then(function(book){
     if(book){
       res.render('books/update-book', {book: book, title: 'Edit Book'});
 } else {
