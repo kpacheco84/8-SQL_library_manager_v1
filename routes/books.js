@@ -53,7 +53,7 @@ router.get('/:id/update-book', function(req, res, next){
     }
   
   }).catch(function(err){
-    res.render(500);
+    res.render("books/error");
   });
 });
 
@@ -69,7 +69,7 @@ router.get("/:id", function(req, res, next){
     res.render("page-not-found");
   }
 }).catch(function(error){
-    res.sendStatus(500, error);
+  res.render("books/error");
   });
 });
 
@@ -98,7 +98,7 @@ router.put('/:id', function(req, res, next){
   }
   })
    .catch(function(err){
-    res.render(500);
+    res.render("books/error");
   });
 });
 
@@ -114,7 +114,7 @@ router.delete('/:id', function(req, res, next){
   }).then(function(){
     res.redirect("/books");
   }).catch(function(err){
-    res.send(500);
+    res.render("books/error");
   });
 });
 
