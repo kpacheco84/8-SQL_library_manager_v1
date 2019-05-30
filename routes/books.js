@@ -66,7 +66,7 @@ router.get("/:id", function(req, res, next){
     if(book){
       res.render('books/update-book', {book: book, title: 'Edit Book'});
 } else {
-    res.render("page-not-found");
+    res.render("books/page-not-found");
   }
 }).catch(function(error){
   res.render("books/error");
