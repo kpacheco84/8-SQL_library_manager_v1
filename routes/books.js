@@ -47,7 +47,7 @@ router.get('/new-book', function(req, res, next) {
 router.get('/:id/update-book', function(req, res, next){
   book.findByPk(req.params.id).then(function(book) {
     if(book){
-    res.render('books/update-book', {book: book, title: 'Edit Eook'});
+    res.render('books/update-book', {book: book, title: 'Edit Book'});
     }else {
       res.render("books/page-not-found");
     }
